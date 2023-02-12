@@ -20,7 +20,7 @@ def about():
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')
+    return render_template('profile.html', date = now)
 
 ###
 # The functions below should be applicable to all Flask apps.
@@ -51,10 +51,9 @@ def page_not_found(error):
     return render_template('404.html'), 404
 
 now = datetime.datetime.now() # today's date
+now = now.strftime("%B, %Y")
 date_joined = datetime.date(2019, 2, 7) # a specific date
 ## Format the date to return only month and year date
 
-def format_date_joined(now):
-    print ("Joined "  + date_joined.strftime("%B, %Y"))
-
-format_date_joined(now)
+def format_date_joined(date):
+    return("Joined "  + date.strftime("%B, %Y"))
